@@ -1,15 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const fieldItemsSlice = createSlice({
-  name: 'fieldItems',
-  initialState: { value: {} },
+export const appStateSlice = createSlice({
+  name: 'appState',
+  initialState: { currentQuestion: 0 },
   reducers: {
-    updateField: (state, action) => {
-      state.value = action.payload;
+    updateCurrentQuestion: (state, action) => {
+      state.currentQuestion = action.payload;
     },
   },
 });
 
-export const { updateField } = fieldItemsSlice.actions;
+export const { updateCurrentQuestion } = appStateSlice.actions;
 
-export default fieldItemsSlice.reducer;
+export default appStateSlice.reducer;

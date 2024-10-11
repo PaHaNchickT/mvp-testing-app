@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from '@nextui-org/react';
 import { useEffect, useState, type ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 
@@ -30,7 +29,6 @@ const TestWrapper = (): ReactElement => {
         ))}
       </div>
       <TestQuestion item={QUESTIONS[currentQuestion]} />
-      <Button color="danger">Next</Button>
     </section>
   );
 };
