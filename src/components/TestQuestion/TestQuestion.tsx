@@ -5,9 +5,12 @@ import { useState, type ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
+import { TEXT_CONTENT } from '@/constants/constants';
 import { updateCurrentQuestion } from '@/redux/fieldItemsSlice';
 import type { RootState } from '@/redux/store';
 import type { TQuestion } from '@/types/types';
+
+import OptsForm from '../OptsForm/OptsForm';
 
 const TestQuestion = (props: { item: TQuestion }): ReactElement => {
   const dispatch = useDispatch();
@@ -24,12 +27,12 @@ const TestQuestion = (props: { item: TQuestion }): ReactElement => {
 
   return (
     <>
-      <div className={`${opacity} transition-all`}>
+      <div className={`${opacity} transition-all flex flex-col gap-5`}>
         <p className="text-justify">{props.item.title}</p>
-        <p>{props.item.type}</p>
+        {props.item.variants ? <OptsForm item={props.item} /> : <p>HehHah</p>}
       </div>
       <Button color="danger" onPress={clickHandler}>
-        Next
+        {TEXT_CONTENT.questions.answerBtn}
       </Button>
     </>
   );

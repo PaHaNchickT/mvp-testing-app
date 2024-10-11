@@ -3,6 +3,7 @@
 import { useEffect, useState, type ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 
+import { TEXT_CONTENT } from '@/constants/constants';
 import { QUESTIONS } from '@/constants/questions';
 import type { RootState } from '@/redux/store';
 
@@ -20,7 +21,7 @@ const TestWrapper = (): ReactElement => {
   return (
     <section className={`flex flex-col items-start gap-5 min-w-[400px] max-w-[600px] ${opacity} transition-all`}>
       <div className="flex gap-5">
-        <h2>Тестирование</h2>
+        <h2>{TEXT_CONTENT.questions.title}</h2>
         <p>00:00</p>
       </div>
       <div className="w-full flex justify-between gap-1">
