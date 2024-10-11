@@ -11,6 +11,7 @@ import type { RootState } from '@/redux/store';
 import type { TQuestion } from '@/types/types';
 
 import OptsForm from '../OptsForm/OptsForm';
+import TextForm from '../TextForm/TextForm';
 
 const TestQuestion = (props: { item: TQuestion }): ReactElement => {
   const dispatch = useDispatch();
@@ -29,7 +30,7 @@ const TestQuestion = (props: { item: TQuestion }): ReactElement => {
     <>
       <div className={`${opacity} transition-all flex flex-col gap-5`}>
         <p className="text-justify">{props.item.title}</p>
-        {props.item.variants ? <OptsForm item={props.item} /> : <p>HehHah</p>}
+        {props.item.variants ? <OptsForm item={props.item} /> : <TextForm item={props.item} />}
       </div>
       <Button color="danger" onPress={clickHandler}>
         {TEXT_CONTENT.questions.answerBtn}
