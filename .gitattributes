@@ -11,9 +11,3 @@
 *.gif binary
 *.ico binary
 *.tiff binary
-
-# Fonts
-*.ttf binary
-
-# Audio
-*.mp3 binary
