@@ -1,11 +1,9 @@
 'use client';
 
-import { Button } from '@nextui-org/react';
 import { useState, type ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import { TEXT_CONTENT } from '@/constants/constants';
 import { updateCurrentQuestion } from '@/redux/fieldItemsSlice';
 import type { RootState } from '@/redux/store';
 import type { TQuestion } from '@/types/types';
@@ -28,13 +26,14 @@ const TestQuestion = (props: { item: TQuestion }): ReactElement => {
 
   return (
     <>
-      <div className={`${opacity} transition-all flex flex-col gap-5`}>
-        <p className="text-justify">{props.item.title}</p>
-        {props.item.variants ? <OptsForm item={props.item} /> : <TextForm item={props.item} />}
+      <div className="flex flex-col gap-5">
+        <p className={`text-justify ${opacity} transition-all`}>{props.item.title}</p>
+        {props.item.variants ? (
+          <OptsForm item={props.item as Required<TQuestion>} clickHandler={clickHandler} opacity={opacity} />
+        ) : (
+          <TextForm item={props.item} />
+        )}
       </div>
-      <Button color="danger" onPress={clickHandler}>
-        {TEXT_CONTENT.questions.answerBtn}
-      </Button>
     </>
   );
 };

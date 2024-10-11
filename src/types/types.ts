@@ -4,3 +4,5 @@ export type TQuestion = {
   variants?: string[];
   correctAnswer?: string[];
 };
+
+export type TOptsForm = { answer: string };
