@@ -9,6 +9,10 @@ export const TEXT_CONTENT = {
   },
   questions: {
     title: 'Тестирование',
-    answerBtn: 'Ответить'
-  }
+    answerBtn: 'Ответить',
+    endBtn: 'Закончить',
+    textLowLabel: 'Введите свой ответ:',
+    textHighLabel: 'Напишите развернутый ответ:',
+    errorText: 'Пожалуйста, ответьте на вопрос',
+  },
 };

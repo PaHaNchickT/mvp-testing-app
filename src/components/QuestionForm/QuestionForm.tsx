@@ -84,7 +84,7 @@ const QuestionForm = (props: {
       ) : props.item.type === 'input' ? (
         <Input
           type="text"
-          label="Введите свой ответ:"
+          label={TEXT_CONTENT.questions.textLowLabel}
           {...register('answer')}
           value={watch('answer')}
           className={`${props.opacity} transition-all`}
@@ -94,7 +94,7 @@ const QuestionForm = (props: {
         />
       ) : (
         <Textarea
-          label="Введите свой ответ:"
+          label={TEXT_CONTENT.questions.textHighLabel}
           {...register('answer')}
           value={watch('answer')}
           className={`${props.opacity} transition-all`}
