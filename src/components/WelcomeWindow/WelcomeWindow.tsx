@@ -1,7 +1,7 @@
 'use client';
 
 import { Button, Divider, Image } from '@nextui-org/react';
-import { useState, type ReactElement } from 'react';
+import { useEffect, useState, type ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { TEXT_CONTENT } from '@/constants/constants';
@@ -9,12 +9,16 @@ import { startTest } from '@/redux/fieldItemsSlice';
 
 const WelcomeWindow = (): ReactElement => {
   const dispatch = useDispatch();
-  const [opacity, setOpacity] = useState('opacity-100');
+  const [opacity, setOpacity] = useState('opacity-0');
 
   const clickHandler = (): void => {
     setOpacity('opacity-0');
     setTimeout(() => dispatch(startTest()), 250);
   };
+
+  useEffect(() => {
+    setTimeout(() => setOpacity('opacity-100'), 250);
+  }, []);
 
   return (
     <section className={`flex justify-center gap-5 h-[400px] ${opacity} transition-all`}>
