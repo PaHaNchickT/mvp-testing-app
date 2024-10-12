@@ -3,7 +3,7 @@ export const TEXT_CONTENT = {
     headerTitle: 'Тестик',
   },
   footer: {
-    madeby: 'Сделано Павлом Терно',
+    madeby: 'Сделал Павел Терно',
     works: 'Больше работ тут:',
   },
   welcome: {
