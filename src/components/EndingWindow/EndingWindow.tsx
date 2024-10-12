@@ -4,6 +4,7 @@ import { Button } from '@nextui-org/react';
 import { useState, type ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { TEXT_CONTENT } from '@/constants/constants';
 import { startTest } from '@/redux/fieldItemsSlice';
 
 const EndingWindow = (): ReactElement => {
@@ -17,12 +18,10 @@ const EndingWindow = (): ReactElement => {
 
   return (
     <section className={`flex flex-col justify-center items-center gap-5 w-[400px] ${opacity} transition-all`}>
-      <h2 className="font-black text-2xl">Тестирование завершено!</h2>
-      <p className="text-sm text-center">
-        Ваши ответы успешно записаны. В течение нескольких дней результат появится в вашем личном кабинете
-      </p>
+      <h2 className="font-black text-2xl">{TEXT_CONTENT.ending.title}</h2>
+      <p className="text-sm text-center">{TEXT_CONTENT.ending.text}</p>
       <Button color="danger" onPress={clickHandler}>
-        Главная страница
+        {TEXT_CONTENT.ending.button}
       </Button>
     </section>
   );
