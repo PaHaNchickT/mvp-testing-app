@@ -43,7 +43,9 @@ const Timer = (): ReactElement => {
     };
   }, [seconds]);
 
-  return <p>{`${minutes.toString().padStart(2, '0')}:${(seconds - minutes * 60).toString().padStart(2, '0')}`}</p>;
+  return (
+    <p className="text-xl w-[55px] text-center">{`${minutes.toString().padStart(2, '0')}:${(seconds - minutes * 60).toString().padStart(2, '0')}`}</p>
+  );
 };
 
 export default Timer;
