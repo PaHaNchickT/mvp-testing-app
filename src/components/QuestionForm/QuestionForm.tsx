@@ -24,6 +24,9 @@ const QuestionForm = (props: {
   } = useForm<TOptsForm>({
     mode: 'onChange',
     resolver: zodResolver(QuestionFormSchema()),
+    defaultValues: {
+      answer: '',
+    },
   });
 
   const [selectedCheck, setSelectedCheck] = useState<string[]>([]);
