@@ -57,7 +57,9 @@ const QuestionForm = (props: {
     if (props.item.type === 'radio' || props.item.type === 'check') {
       typeof props.item.correctAnswer === 'string'
         ? (isCorrect = data.answer === props.item.correctAnswer)
-        : (isCorrect = JSON.stringify(data.answer) === JSON.stringify(props.item.correctAnswer));
+        : (isCorrect =
+            JSON.stringify((data.answer as unknown as string[]).sort()) ===
+            JSON.stringify(props.item.correctAnswer.sort()));
     }
 
     setSelectedCheck([]);
