@@ -7,12 +7,14 @@ import TestWrapper from '@/components/TestWrapper/TestWrapper';
 import WelcomeWindow from '@/components/WelcomeWindow/WelcomeWindow';
 import type { RootState } from '@/redux/store';
 
+import EndingWindow from '../EndingWindow/EndingWindow';
+
 const Controller = (): ReactElement => {
   let UI = <WelcomeWindow />;
   const appState = useSelector((state: RootState) => state.appState);
 
   if (appState.isTestStarted) UI = <TestWrapper />;
-  if (appState.isTestEnded) UI = <p>Ended</p>;
+  if (appState.isTestEnded) UI = <EndingWindow />;
 
   return UI;
 };
