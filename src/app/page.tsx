@@ -4,7 +4,7 @@ import { Spinner } from '@nextui-org/react';
 import { useEffect, useState, type ReactElement } from 'react';
 import { Provider } from 'react-redux';
 
-import Controller from '@/components/Controller/Controller';
+import PageController from '@/components/PageController/PageController';
 
 import { store } from '../redux/store';
 
@@ -18,7 +18,7 @@ const App = (): ReactElement => {
       {mounted ? (
         <main className="flex justify-center">
           <Provider store={store}>
-            <Controller />
+            <PageController />
           </Provider>
         </main>
       ) : (

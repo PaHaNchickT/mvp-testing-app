@@ -9,7 +9,7 @@ import type { RootState } from '@/redux/store';
 
 import EndingWindow from '../EndingWindow/EndingWindow';
 
-const Controller = (): ReactElement => {
+const PageController = (): ReactElement => {
   let UI = <WelcomeWindow />;
   const appState = useSelector((state: RootState) => state.appState);
 
@@ -19,4 +19,4 @@ const Controller = (): ReactElement => {
   return UI;
 };
 
-export default Controller;
+export default PageController;
