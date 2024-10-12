@@ -1,7 +1,7 @@
 import type { ZodSchema } from 'zod';
 import { z } from 'zod';
 
-const OptsFormSchema = (): ZodSchema => {
+const QuestionFormSchema = (): ZodSchema => {
   const schema = z.object({
     answer: z.any().refine((value) => value.length, { message: 'Пожалуйста, выберите вариант ответа' }),
   });
@@ -9,4 +9,4 @@ const OptsFormSchema = (): ZodSchema => {
   return schema;
 };
 
-export default OptsFormSchema;
+export default QuestionFormSchema;

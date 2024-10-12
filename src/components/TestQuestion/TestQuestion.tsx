@@ -8,8 +8,7 @@ import { updateCurrentQuestion } from '@/redux/fieldItemsSlice';
 import type { RootState } from '@/redux/store';
 import type { TQuestion } from '@/types/types';
 
-import OptsForm from '../OptsForm/OptsForm';
-import TextForm from '../TextForm/TextForm';
+import QuestionForm from '../QuestionForm/QuestionForm';
 
 const TestQuestion = (props: { item: TQuestion }): ReactElement => {
   const dispatch = useDispatch();
@@ -28,11 +27,7 @@ const TestQuestion = (props: { item: TQuestion }): ReactElement => {
     <>
       <div className="flex flex-col gap-5">
         <p className={`text-justify ${opacity} transition-all`}>{props.item.title}</p>
-        {props.item.variants ? (
-          <OptsForm item={props.item as Required<TQuestion>} clickHandler={clickHandler} opacity={opacity} />
-        ) : (
-          <TextForm item={props.item} clickHandler={clickHandler} opacity={opacity} />
-        )}
+        <QuestionForm item={props.item as Required<TQuestion>} clickHandler={clickHandler} opacity={opacity} />
       </div>
     </>
   );
