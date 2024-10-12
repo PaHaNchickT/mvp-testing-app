@@ -19,6 +19,7 @@ const QuestionForm = (props: {
     reset,
     watch,
     setValue,
+    getValues,
     handleSubmit,
     formState: { errors },
   } = useForm<TOptsForm>({
@@ -36,10 +37,10 @@ const QuestionForm = (props: {
   };
 
   useEffect(() => {
-    reset({
-      answer: '',
-    });
+    reset({ answer: '' });
   }, [props.item, reset]);
+
+  console.log(getValues('answer'));
 
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-col items-start gap-5">
@@ -50,6 +51,7 @@ const QuestionForm = (props: {
             isInvalid={Boolean(errors.answer?.message)}
             errorMessage={errors.answer?.message}
             className={`${props.opacity} transition-all`}
+            value={watch('answer')}
           >
             {props.item.variants.map((item, index) => (
               <Radio key={index} value={item} {...register('answer')} onChange={handleChange}>
@@ -63,6 +65,7 @@ const QuestionForm = (props: {
             isInvalid={Boolean(errors.answer?.message)}
             errorMessage={errors.answer?.message}
             className={`${props.opacity} transition-all`}
+            value={watch('answer') as unknown as string[]}
           >
             {props.item.variants.map((item, index) => (
               <Checkbox key={index} value={item} {...register('answer')} onChange={handleChange}>
