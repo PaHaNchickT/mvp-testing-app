@@ -13,11 +13,11 @@ const EndingWindow = (): ReactElement => {
 
   const clickHandler = (): void => {
     setOpacity('opacity-0');
-    setTimeout(() => dispatch(clearTest()), 250);
+    setTimeout(() => dispatch(clearTest()), 150);
   };
 
   useEffect(() => {
-    setTimeout(() => setOpacity('opacity-100'), 250);
+    setTimeout(() => setOpacity('opacity-100'), 150);
   }, []);
 
   return (
