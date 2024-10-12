@@ -4,7 +4,7 @@ import { Button, Divider, Image } from '@nextui-org/react';
 import { useEffect, useState, type ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { TEXT_CONTENT } from '@/constants/constants';
+import { ASSETS_PATH, TEXT_CONTENT } from '@/constants/constants';
 import { startTest } from '@/redux/appStateSlice';
 
 const WelcomeWindow = (): ReactElement => {
@@ -22,7 +22,7 @@ const WelcomeWindow = (): ReactElement => {
 
   return (
     <section className={`flex justify-center gap-5 h-[400px] ${opacity} transition-all`}>
-      <Image alt="nextui logo" height="100%" radius="sm" src="./images/avengers-poster.jpg" />
+      <Image alt="nextui logo" height="100%" radius="sm" src={ASSETS_PATH.mainImage} />
       <Divider orientation="vertical" />
       <div className="w-1/3 flex flex-col gap-5 justify-center items-start">
         <h2 className="font-black text-2xl">{TEXT_CONTENT.welcome.title}</h2>

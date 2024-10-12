@@ -29,3 +29,7 @@ export const TEXT_CONTENT = {
     },
   } as { [key: string]: { [key: string]: string } },
 };
+
+export const ASSETS_PATH = {
+  mainImage: './images/avengers-poster.jpg',
+};
