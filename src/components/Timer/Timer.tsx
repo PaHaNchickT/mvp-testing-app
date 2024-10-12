@@ -6,7 +6,7 @@ import { useEffect, useState, type ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import { TIMER_CONFIG } from '@/constants/timerConfig';
+import { TIMER_CONFIG } from '@/constants/TIMER_CONFIG';
 import { endTestFailure, setWrapperOpacity } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 

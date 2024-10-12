@@ -4,7 +4,7 @@ import { Button } from '@nextui-org/react';
 import { useRouter } from 'next/navigation';
 import type { ReactElement } from 'react';
 
-import { TEXT_CONTENT } from '@/constants/constants';
+import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
 
 export default function NotFound(): ReactElement {
   const router = useRouter();

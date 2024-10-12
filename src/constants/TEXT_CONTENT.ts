@@ -28,8 +28,4 @@ export const TEXT_CONTENT = {
       button: 'Попробовать еще',
     },
   } as { [key: string]: { [key: string]: string } },
-};
-
-export const ASSETS_PATH = {
-  mainImage: './images/avengers-poster.jpg',
-};
+}

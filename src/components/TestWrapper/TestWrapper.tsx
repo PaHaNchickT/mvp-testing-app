@@ -6,9 +6,9 @@ import { useEffect, type ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import { TEXT_CONTENT } from '@/constants/constants';
 import { QUESTIONS } from '@/constants/questions';
-import { TIMER_CONFIG } from '@/constants/timerConfig';
+import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
+import { TIMER_CONFIG } from '@/constants/TIMER_CONFIG';
 import { setWrapperOpacity } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 

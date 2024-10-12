@@ -4,7 +4,8 @@ import { Button, Divider, Image } from '@nextui-org/react';
 import { useEffect, useState, type ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { ASSETS_PATH, TEXT_CONTENT } from '@/constants/constants';
+import { ASSETS_PATH } from '@/constants/ASSETS_PATH';
+import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
 import { startTest } from '@/redux/appStateSlice';
 
 const WelcomeWindow = (): ReactElement => {
