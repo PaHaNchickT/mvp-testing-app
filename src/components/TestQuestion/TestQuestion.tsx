@@ -31,7 +31,7 @@ const TestQuestion = (props: { item: TQuestion }): ReactElement => {
         {props.item.variants ? (
           <OptsForm item={props.item as Required<TQuestion>} clickHandler={clickHandler} opacity={opacity} />
         ) : (
-          <TextForm item={props.item} />
+          <TextForm item={props.item} clickHandler={clickHandler} opacity={opacity} />
         )}
       </div>
     </>
