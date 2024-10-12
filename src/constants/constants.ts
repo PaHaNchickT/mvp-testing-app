@@ -14,6 +14,7 @@ export const TEXT_CONTENT = {
     textLowLabel: 'Введите свой ответ:',
     textHighLabel: 'Напишите развернутый ответ:',
     errorText: 'Пожалуйста, ответьте на вопрос',
+    isCorrect: 'Необходима проверка вручную',
   },
   ending: {
     title: 'Тестирование завершено!',

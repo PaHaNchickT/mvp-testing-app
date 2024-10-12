@@ -19,6 +19,9 @@ const QuestionForm = (props: {
   clickHandler: () => void;
   opacity: string;
 }): ReactElement => {
+  const [answers, setAnswers] = useState<
+    { question: string; answer: string | string[]; isCorrect: boolean | string }[]
+  >([]);
   const dispatch = useDispatch();
   const [selectedCheck, setSelectedCheck] = useState<string[]>([]);
   const currentQuestion = useSelector((state: RootState) => state.appState.currentQuestion);
@@ -49,12 +52,28 @@ const QuestionForm = (props: {
   };
 
   const submit = (data: TOptsForm): void => {
-    console.log(data);
+    let isCorrect: string | boolean = TEXT_CONTENT.questions.isCorrect;
+
+    if (props.item.type === 'radio' || props.item.type === 'check') {
+      typeof props.item.correctAnswer === 'string'
+        ? (isCorrect = data.answer === props.item.correctAnswer)
+        : (isCorrect = JSON.stringify(data.answer) === JSON.stringify(props.item.correctAnswer));
+    }
 
     setSelectedCheck([]);
     reset({ answer: '' });
+    setAnswers((e) => [
+      ...e,
+      {
+        question: props.item.title,
+        answer: data.answer,
+        isCorrect,
+      },
+    ]);
 
     if (currentQuestion === QUESTIONS.length - 1) {
+      console.log([...answers, data.answer]);
+
       dispatch(setWrapperOpacity('opacity-0'));
       setTimeout(() => dispatch(endTest()), 250);
     } else {
