@@ -4,7 +4,7 @@ import { useState, type ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import { updateCurrentQuestion } from '@/redux/fieldItemsSlice';
+import { updateCurrentQuestion } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 import type { TQuestion } from '@/types/types';
 

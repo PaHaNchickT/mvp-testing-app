@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 
 import { TEXT_CONTENT } from '@/constants/constants';
 import { QUESTIONS } from '@/constants/questions';
-import { endTest, setWrapperOpacity } from '@/redux/fieldItemsSlice';
+import { endTest, setWrapperOpacity } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 import type { TOptsForm, TQuestion } from '@/types/types';
 import QuestionFormSchema from '@/validation/QuestionFormSchema';

@@ -5,7 +5,7 @@ import { useEffect, useState, type ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { TEXT_CONTENT } from '@/constants/constants';
-import { clearTest } from '@/redux/fieldItemsSlice';
+import { clearTest } from '@/redux/appStateSlice';
 
 const EndingWindow = (): ReactElement => {
   const dispatch = useDispatch();

@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 
 import { TEXT_CONTENT } from '@/constants/constants';
 import { QUESTIONS } from '@/constants/questions';
-import { setWrapperOpacity } from '@/redux/fieldItemsSlice';
+import { setWrapperOpacity } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 
 import TestItems from '../TestItems/TestItems';

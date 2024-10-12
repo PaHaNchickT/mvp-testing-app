@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import appStateReducer from './fieldItemsSlice';
+import appStateReducer from './appStateSlice';
 
 export const store = configureStore({
   reducer: {

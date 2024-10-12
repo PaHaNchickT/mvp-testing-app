@@ -5,7 +5,7 @@ import { useEffect, useState, type ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { TEXT_CONTENT } from '@/constants/constants';
-import { startTest } from '@/redux/fieldItemsSlice';
+import { startTest } from '@/redux/appStateSlice';
 
 const WelcomeWindow = (): ReactElement => {
   const dispatch = useDispatch();
