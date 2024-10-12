@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Checkbox, CheckboxGroup, Input, Radio, RadioGroup, Textarea } from '@nextui-org/react';
-import { useEffect, type ReactElement } from 'react';
+import { useEffect, useState, type ReactElement } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { TEXT_CONTENT } from '@/constants/constants';
@@ -19,7 +19,6 @@ const QuestionForm = (props: {
     reset,
     watch,
     setValue,
-    getValues,
     handleSubmit,
     formState: { errors },
   } = useForm<TOptsForm>({
@@ -27,8 +26,11 @@ const QuestionForm = (props: {
     resolver: zodResolver(QuestionFormSchema()),
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    setValue('answer', e.target.value, { shouldValidate: true });
+  const [selectedCheck, setSelectedCheck] = useState<string[]>([]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    setSelectedCheck((el) => [...el, event.target.value]);
+    setValue('answer', event.target.value, { shouldValidate: true });
   };
 
   const submit = (data: TOptsForm): void => {
@@ -37,10 +39,11 @@ const QuestionForm = (props: {
   };
 
   useEffect(() => {
+    setSelectedCheck([]);
     reset({ answer: '' });
   }, [props.item, reset]);
 
-  console.log(getValues('answer'));
+  console.log(watch('answer'));
 
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-col items-start gap-5">
@@ -65,7 +68,7 @@ const QuestionForm = (props: {
             isInvalid={Boolean(errors.answer?.message)}
             errorMessage={errors.answer?.message}
             className={`${props.opacity} transition-all`}
-            value={watch('answer') as unknown as string[]}
+            value={selectedCheck}
           >
             {props.item.variants.map((item, index) => (
               <Checkbox key={index} value={item} {...register('answer')} onChange={handleChange}>
