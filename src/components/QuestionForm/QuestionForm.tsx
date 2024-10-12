@@ -42,6 +42,7 @@ const QuestionForm = (props: {
     },
   });
 
+  // Function for onChange inputs event
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setValue('answer', event.target.value, { shouldValidate: true });
 
@@ -52,9 +53,11 @@ const QuestionForm = (props: {
       : setSelectedCheck((el) => el.filter((e) => e !== event.target.value));
   };
 
+  // Submit function
   const submit = (data: TOptsForm): void => {
     let isCorrect: string | boolean = TEXT_CONTENT.questions.isCorrect;
 
+    // Validation correct answers
     if (props.item.type === 'radio' || props.item.type === 'check') {
       typeof props.item.correctAnswer === 'string'
         ? (isCorrect = data.answer === props.item.correctAnswer)
@@ -63,6 +66,7 @@ const QuestionForm = (props: {
             JSON.stringify(props.item.correctAnswer.sort()));
     }
 
+    // LocalStorage saving
     localStorageUtil().saveData(
       'answers',
       JSON.stringify([
@@ -86,6 +90,7 @@ const QuestionForm = (props: {
       },
     ]);
 
+    // End of the test
     if (currentQuestion === QUESTIONS.length - 1) {
       console.log([...answers, data.answer]);
 
@@ -99,17 +104,28 @@ const QuestionForm = (props: {
     }
   };
 
+  // Props for inputs
+  const itemVariantsProps = {
+    color: 'danger' as const,
+    isInvalid: Boolean(errors.answer?.message),
+    errorMessage: errors.answer?.message,
+    className: `${props.opacity} transition-all`,
+  };
+
+  const itemNonVariantsProps = {
+    ...register('answer'),
+    value: watch('answer'),
+    className: `${props.opacity} transition-all`,
+    onChange: handleChange,
+    isInvalid: Boolean(errors.answer),
+    errorMessage: errors.answer?.message,
+  };
+
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-col items-start gap-5">
       {props.item.variants ? (
         props.item.type === 'radio' ? (
-          <RadioGroup
-            color="danger"
-            isInvalid={Boolean(errors.answer?.message)}
-            errorMessage={errors.answer?.message}
-            className={`${props.opacity} transition-all`}
-            value={watch('answer')}
-          >
+          <RadioGroup {...itemVariantsProps} value={watch('answer')}>
             {props.item.variants.map((item, index) => (
               <Radio key={index} value={item} {...register('answer')} onChange={handleChange}>
                 {item}
@@ -117,13 +133,7 @@ const QuestionForm = (props: {
             ))}
           </RadioGroup>
         ) : (
-          <CheckboxGroup
-            color="danger"
-            isInvalid={Boolean(errors.answer?.message)}
-            errorMessage={errors.answer?.message}
-            className={`${props.opacity} transition-all`}
-            value={selectedCheck}
-          >
+          <CheckboxGroup {...itemVariantsProps} value={selectedCheck}>
             {props.item.variants.map((item, index) => (
               <Checkbox key={index} value={item} {...register('answer')} onChange={handleChange}>
                 {item}
@@ -132,26 +142,9 @@ const QuestionForm = (props: {
           </CheckboxGroup>
         )
       ) : props.item.type === 'input' ? (
-        <Input
-          type="text"
-          label={TEXT_CONTENT.questions.textLowLabel}
-          {...register('answer')}
-          value={watch('answer')}
-          className={`${props.opacity} transition-all`}
-          onChange={handleChange}
-          isInvalid={Boolean(errors.answer)}
-          errorMessage={errors.answer?.message}
-        />
+        <Input type="text" label={TEXT_CONTENT.questions.textLowLabel} {...itemNonVariantsProps} />
       ) : (
-        <Textarea
-          label={TEXT_CONTENT.questions.textHighLabel}
-          {...register('answer')}
-          value={watch('answer')}
-          className={`${props.opacity} transition-all`}
-          onChange={handleChange}
-          isInvalid={Boolean(errors.answer)}
-          errorMessage={errors.answer?.message}
-        />
+        <Textarea label={TEXT_CONTENT.questions.textHighLabel} {...itemNonVariantsProps} />
       )}
       <Button type="submit" color="danger" isDisabled={Boolean(errors.answer?.message)}>
         {currentQuestion === QUESTIONS.length - 1 ? TEXT_CONTENT.questions.endBtn : TEXT_CONTENT.questions.answerBtn}
