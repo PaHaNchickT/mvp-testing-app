@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Checkbox, CheckboxGroup, Input, Radio, RadioGroup, Textarea } from '@nextui-org/react';
-import { useEffect, useState, type ReactElement } from 'react';
+import { useState, type ReactElement } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { TEXT_CONTENT } from '@/constants/constants';
@@ -29,21 +29,22 @@ const QuestionForm = (props: {
   const [selectedCheck, setSelectedCheck] = useState<string[]>([]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setSelectedCheck((el) => [...el, event.target.value]);
     setValue('answer', event.target.value, { shouldValidate: true });
+
+    if (props.item.type !== 'check') return;
+
+    !selectedCheck.includes(event.target.value)
+      ? setSelectedCheck((el) => [...el, event.target.value])
+      : setSelectedCheck((el) => el.filter((e) => e !== event.target.value));
   };
 
   const submit = (data: TOptsForm): void => {
     console.log(data);
-    props.clickHandler();
-  };
 
-  useEffect(() => {
+    props.clickHandler();
     setSelectedCheck([]);
     reset({ answer: '' });
-  }, [props.item, reset]);
-
-  console.log(watch('answer'));
+  };
 
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-col items-start gap-5">
