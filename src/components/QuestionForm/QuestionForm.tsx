@@ -4,8 +4,13 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button, Checkbox, CheckboxGroup, Input, Radio, RadioGroup, Textarea } from '@nextui-org/react';
 import { useState, type ReactElement } from 'react';
 import { useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { TEXT_CONTENT } from '@/constants/constants';
+import { QUESTIONS } from '@/constants/questions';
+import { endTest, setWrapperOpacity } from '@/redux/fieldItemsSlice';
+import type { RootState } from '@/redux/store';
 import type { TOptsForm, TQuestion } from '@/types/types';
 import QuestionFormSchema from '@/validation/QuestionFormSchema';
 
@@ -14,6 +19,10 @@ const QuestionForm = (props: {
   clickHandler: () => void;
   opacity: string;
 }): ReactElement => {
+  const dispatch = useDispatch();
+  const [selectedCheck, setSelectedCheck] = useState<string[]>([]);
+  const currentQuestion = useSelector((state: RootState) => state.appState.currentQuestion);
+
   const {
     register,
     reset,
@@ -29,8 +38,6 @@ const QuestionForm = (props: {
     },
   });
 
-  const [selectedCheck, setSelectedCheck] = useState<string[]>([]);
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setValue('answer', event.target.value, { shouldValidate: true });
 
@@ -44,9 +51,15 @@ const QuestionForm = (props: {
   const submit = (data: TOptsForm): void => {
     console.log(data);
 
-    props.clickHandler();
     setSelectedCheck([]);
     reset({ answer: '' });
+
+    if (currentQuestion === QUESTIONS.length - 1) {
+      dispatch(setWrapperOpacity('opacity-0'));
+      setTimeout(() => dispatch(endTest()), 250);
+    } else {
+      props.clickHandler();
+    }
   };
 
   return (
@@ -104,7 +117,7 @@ const QuestionForm = (props: {
         />
       )}
       <Button type="submit" color="danger" isDisabled={Boolean(errors.answer?.message)}>
-        {TEXT_CONTENT.questions.answerBtn}
+        {currentQuestion === QUESTIONS.length - 1 ? TEXT_CONTENT.questions.endBtn : TEXT_CONTENT.questions.answerBtn}
       </Button>
     </form>
   );

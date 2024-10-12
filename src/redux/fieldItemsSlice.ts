@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const appStateSlice = createSlice({
   name: 'appState',
-  initialState: { currentQuestion: 0, isTestStarted: false, isTestEnded: false },
+  initialState: { currentQuestion: 0, isTestStarted: false, isTestEnded: false, wrapperOpacity: 'opacity-0' },
   reducers: {
     updateCurrentQuestion: (state, action) => {
       state.currentQuestion = action.payload;
@@ -17,9 +17,12 @@ export const appStateSlice = createSlice({
     clearTest: (state) => {
       state.isTestEnded = false;
     },
+    setWrapperOpacity: (state, action) => {
+      state.wrapperOpacity = action.payload;
+    },
   },
 });
 
-export const { updateCurrentQuestion, startTest, endTest, clearTest } = appStateSlice.actions;
+export const { updateCurrentQuestion, startTest, endTest, clearTest, setWrapperOpacity } = appStateSlice.actions;
 
 export default appStateSlice.reducer;
