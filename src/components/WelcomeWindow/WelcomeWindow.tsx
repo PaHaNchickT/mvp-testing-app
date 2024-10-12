@@ -1,17 +1,19 @@
 'use client';
 
 import { Button, Divider, Image } from '@nextui-org/react';
-import type { Dispatch, SetStateAction } from 'react';
 import { useState, type ReactElement } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { TEXT_CONTENT } from '@/constants/constants';
+import { startTest } from '@/redux/fieldItemsSlice';
 
-const WelcomeWindow = (props: { setIsStarted: Dispatch<SetStateAction<boolean>> }): ReactElement => {
+const WelcomeWindow = (): ReactElement => {
+  const dispatch = useDispatch();
   const [opacity, setOpacity] = useState('opacity-100');
 
   const clickHandler = (): void => {
     setOpacity('opacity-0');
-    setTimeout(() => props.setIsStarted(true), 250);
+    setTimeout(() => dispatch(startTest()), 250);
   };
 
   return (
