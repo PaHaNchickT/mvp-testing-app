@@ -22,7 +22,7 @@ const QuestionForm = (props: {
 }): ReactElement => {
   const [answers, setAnswers] = useState<
     { question: string; answer: string | string[]; isCorrect: boolean | string }[]
-  >([]);
+  >(localStorageUtil().getData('answers') ? JSON.parse(localStorageUtil().getData('answers')!) : []);
   const dispatch = useDispatch();
   const [selectedCheck, setSelectedCheck] = useState<string[]>([]);
   const currentQuestion = useSelector((state: RootState) => state.appState.currentQuestion);
@@ -63,7 +63,18 @@ const QuestionForm = (props: {
             JSON.stringify(props.item.correctAnswer.sort()));
     }
 
-    localStorageUtil().saveData('answers', JSON.stringify([...answers, data.answer]));
+    localStorageUtil().saveData(
+      'answers',
+      JSON.stringify([
+        ...answers,
+        {
+          question: props.item.title,
+          answer: data.answer,
+          isCorrect,
+        },
+      ]),
+    );
+
     setSelectedCheck([]);
     reset({ answer: '' });
     setAnswers((e) => [

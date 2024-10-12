@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
 import { clearTest } from '@/redux/appStateSlice';
+import { localStorageUtil } from '@/utils/localStorage';
 
 const EndingWindow = (props: { state: string }): ReactElement => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const EndingWindow = (props: { state: string }): ReactElement => {
 
   useEffect(() => {
     setTimeout(() => setOpacity('opacity-100'), 150);
+    localStorageUtil().clearStorage();
   }, []);
 
   return (

@@ -1,10 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { localStorageUtil } from '@/utils/localStorage';
+
 export const appStateSlice = createSlice({
   name: 'appState',
   initialState: {
-    currentQuestion: 0,
-    isTestStarted: false,
+    currentQuestion: localStorageUtil().getData('currentQuestion')
+      ? +localStorageUtil().getData('currentQuestion')!
+      : 0,
+    isTestStarted: localStorageUtil().getData('isTestStarted')
+      ? JSON.parse(localStorageUtil().getData('currentQuestion')!)
+      : false,
     isTestEnded: false,
     wrapperOpacity: 'opacity-0',
     isSuccess: true,

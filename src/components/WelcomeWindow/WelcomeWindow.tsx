@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { ASSETS_PATH } from '@/constants/ASSETS_PATH';
 import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
 import { startTest } from '@/redux/appStateSlice';
+import { localStorageUtil } from '@/utils/localStorage';
 
 const WelcomeWindow = (): ReactElement => {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ const WelcomeWindow = (): ReactElement => {
 
   const clickHandler = (): void => {
     setOpacity('opacity-0');
+    localStorageUtil().saveData('isTestStarted', JSON.stringify(true));
     setTimeout(() => dispatch(startTest()), 250);
   };
 

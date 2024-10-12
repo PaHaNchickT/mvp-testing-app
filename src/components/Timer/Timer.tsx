@@ -13,7 +13,9 @@ import { localStorageUtil } from '@/utils/localStorage';
 
 const Timer = (): ReactElement => {
   const dispatch = useDispatch();
-  const [seconds, setSeconds] = useState(TIMER_CONFIG.seconds);
+  const [seconds, setSeconds] = useState(
+    localStorageUtil().getData('seconds') ? +localStorageUtil().getData('seconds')! : TIMER_CONFIG.seconds,
+  );
   const minutes = Math.floor(seconds / 60);
 
   const appState = useSelector((state: RootState) => state.appState);
