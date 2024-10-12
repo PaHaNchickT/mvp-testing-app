@@ -1,12 +1,15 @@
+/* eslint-disable react-compiler/react-compiler */
+/* eslint-disable react-hooks/exhaustive-deps */
 'use client';
 
-import { useState, type ReactElement } from 'react';
+import { useEffect, useState, type ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
 import { updateCurrentQuestion } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 import type { TQuestion } from '@/types/types';
+import { localStorageUtil } from '@/utils/localStorage';
 
 import QuestionForm from '../QuestionForm/QuestionForm';
 
@@ -22,6 +25,10 @@ const TestQuestion = (props: { item: TQuestion }): ReactElement => {
       setOpacity('opacity-100');
     }, 250);
   };
+
+  useEffect(() => {
+    localStorageUtil().saveData('currentQuestion', currentQuestion.toString());
+  }, [currentQuestion]);
 
   return (
     <>

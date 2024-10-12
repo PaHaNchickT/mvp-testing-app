@@ -12,6 +12,7 @@ import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
 import { endTestSuccess, setWrapperOpacity, updateCurrentQuestion } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 import type { TOptsForm, TQuestion } from '@/types/types';
+import { localStorageUtil } from '@/utils/localStorage';
 import QuestionFormSchema from '@/validation/QuestionFormSchema';
 
 const QuestionForm = (props: {
@@ -62,6 +63,7 @@ const QuestionForm = (props: {
             JSON.stringify(props.item.correctAnswer.sort()));
     }
 
+    localStorageUtil().saveData('answers', JSON.stringify([...answers, data.answer]));
     setSelectedCheck([]);
     reset({ answer: '' });
     setAnswers((e) => [

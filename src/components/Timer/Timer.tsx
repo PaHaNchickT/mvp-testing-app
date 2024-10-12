@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { TIMER_CONFIG } from '@/constants/TIMER_CONFIG';
 import { endTestFailure, setWrapperOpacity } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
+import { localStorageUtil } from '@/utils/localStorage';
 
 const Timer = (): ReactElement => {
   const dispatch = useDispatch();
@@ -28,6 +29,17 @@ const Timer = (): ReactElement => {
 
     return (): void => clearInterval(interval);
   }, [appState.isTestStarted, seconds]);
+
+  useEffect(() => {
+    const handleBeforeUnload = (): void => {
+      localStorageUtil().saveData('seconds', seconds.toString());
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return (): void => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  }, [seconds]);
 
   return <p>{`${minutes.toString().padStart(2, '0')}:${(seconds - minutes * 60).toString().padStart(2, '0')}`}</p>;
 };
