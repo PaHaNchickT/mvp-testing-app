@@ -1,6 +1,10 @@
 export const TEXT_CONTENT = {
   header: {
-    headerTitle: 'Testik',
+    headerTitle: 'Тестик',
+  },
+  footer: {
+    madeby: 'Сделано Павлом Терно',
+    works: 'Больше работ тут:',
   },
   welcome: {
     title: '«Мстители» атакуют: тест на знание Кинематографической вселенной Marvel',
@@ -28,4 +32,4 @@ export const TEXT_CONTENT = {
       button: 'Попробовать еще',
     },
   } as { [key: string]: { [key: string]: string } },
-}
+};
