@@ -4,24 +4,21 @@ import { Spinner } from '@nextui-org/react';
 import { useEffect, useState, type ReactElement } from 'react';
 import { Provider } from 'react-redux';
 
-import WelcomeWindow from '@/components/WelcomeWindow/WelcomeWindow';
+import PageController from '@/components/PageController/PageController';
 
 import { store } from '../redux/store';
 
 const App = (): ReactElement => {
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-    document.addEventListener('contextmenu', (event) => event.preventDefault());
-  }, []);
+  useEffect(() => setMounted(true), []);
 
   return (
     <>
       {mounted ? (
         <main className="flex justify-center">
           <Provider store={store}>
-            <WelcomeWindow />
+            <PageController />
           </Provider>
         </main>
       ) : (
