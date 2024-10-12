@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 
 import { TEXT_CONTENT } from '@/constants/constants';
 import { QUESTIONS } from '@/constants/questions';
-import { endTest, setWrapperOpacity, updateCurrentQuestion } from '@/redux/appStateSlice';
+import { endTestSuccess, setWrapperOpacity, updateCurrentQuestion } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 import type { TOptsForm, TQuestion } from '@/types/types';
 import QuestionFormSchema from '@/validation/QuestionFormSchema';
@@ -78,7 +78,7 @@ const QuestionForm = (props: {
 
       dispatch(setWrapperOpacity('opacity-0'));
       setTimeout(() => {
-        dispatch(endTest());
+        dispatch(endTestSuccess());
         dispatch(updateCurrentQuestion(0));
       }, 250);
     } else {
