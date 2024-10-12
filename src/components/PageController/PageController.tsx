@@ -14,7 +14,7 @@ const PageController = (): ReactElement => {
   const appState = useSelector((state: RootState) => state.appState);
 
   if (appState.isTestStarted) UI = <TestWrapper />;
-  if (appState.isTestEnded) UI = <EndingWindow />;
+  if (appState.isTestEnded) UI = <EndingWindow state={appState.isSuccess ? 'success' : 'failure'} />;
 
   return UI;
 };

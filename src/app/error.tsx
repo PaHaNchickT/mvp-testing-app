@@ -3,7 +3,7 @@
 import { Button } from '@nextui-org/react';
 import type { ReactElement } from 'react';
 
-import { TEXT_CONTENT } from '@/constants/constants';
+import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
 
 const Error = (): ReactElement => {
   return (

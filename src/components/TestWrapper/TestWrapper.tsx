@@ -6,13 +6,15 @@ import { useEffect, type ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import { TEXT_CONTENT } from '@/constants/constants';
 import { QUESTIONS } from '@/constants/questions';
+import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
+import { TIMER_CONFIG } from '@/constants/TIMER_CONFIG';
 import { setWrapperOpacity } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 
 import TestItems from '../TestItems/TestItems';
 import TestQuestion from '../TestQuestion/TestQuestion';
+import Timer from '../Timer/Timer';
 
 const TestWrapper = (): ReactElement => {
   const dispatch = useDispatch();
@@ -28,7 +30,7 @@ const TestWrapper = (): ReactElement => {
     >
       <div className="flex gap-5">
         <h2>{TEXT_CONTENT.questions.title}</h2>
-        <p>00:00</p>
+        {TIMER_CONFIG.isTimerExists && <Timer />}
       </div>
       <div className="w-full flex justify-between gap-1">
         {QUESTIONS.map((item, index) => (

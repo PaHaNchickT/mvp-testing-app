@@ -1,8 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { localStorageUtil } from '@/utils/localStorage';
+
 export const appStateSlice = createSlice({
   name: 'appState',
-  initialState: { currentQuestion: 0, isTestStarted: false, isTestEnded: false, wrapperOpacity: 'opacity-0' },
+  initialState: {
+    currentQuestion: localStorageUtil().getData('currentQuestion')
+      ? +localStorageUtil().getData('currentQuestion')!
+      : 0,
+    isTestStarted: localStorageUtil().getData('isTestStarted')
+      ? JSON.parse(localStorageUtil().getData('currentQuestion')!)
+      : false,
+    isTestEnded: false,
+    wrapperOpacity: 'opacity-0',
+    isSuccess: true,
+  },
   reducers: {
     updateCurrentQuestion: (state, action) => {
       state.currentQuestion = action.payload;
@@ -10,12 +22,19 @@ export const appStateSlice = createSlice({
     startTest: (state) => {
       state.isTestStarted = true;
     },
-    endTest: (state) => {
+    endTestSuccess: (state) => {
       state.isTestStarted = false;
       state.isTestEnded = true;
+      state.isSuccess = true;
+    },
+    endTestFailure: (state) => {
+      state.isTestStarted = false;
+      state.isTestEnded = true;
+      state.isSuccess = false;
     },
     clearTest: (state) => {
       state.isTestEnded = false;
+      state.isSuccess = true;
     },
     setWrapperOpacity: (state, action) => {
       state.wrapperOpacity = action.payload;
@@ -23,6 +42,7 @@ export const appStateSlice = createSlice({
   },
 });
 
-export const { updateCurrentQuestion, startTest, endTest, clearTest, setWrapperOpacity } = appStateSlice.actions;
+export const { updateCurrentQuestion, startTest, endTestSuccess, endTestFailure, clearTest, setWrapperOpacity } =
+  appStateSlice.actions;
 
 export default appStateSlice.reducer;
