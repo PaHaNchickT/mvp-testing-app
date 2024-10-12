@@ -6,12 +6,13 @@ import { useEffect, useState, type ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
+import { TIMER_CONFIG } from '@/constants/timerConfig';
 import { endTestFailure, setWrapperOpacity } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 
 const Timer = (): ReactElement => {
   const dispatch = useDispatch();
-  const [seconds, setSeconds] = useState(900);
+  const [seconds, setSeconds] = useState(TIMER_CONFIG.seconds);
   const minutes = Math.floor(seconds / 60);
 
   const appState = useSelector((state: RootState) => state.appState);

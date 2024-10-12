@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 
 import { TEXT_CONTENT } from '@/constants/constants';
 import { QUESTIONS } from '@/constants/questions';
-import { IS_TIMER_EXISTS } from '@/constants/timerState';
+import { TIMER_CONFIG } from '@/constants/timerConfig';
 import { setWrapperOpacity } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 
@@ -30,7 +30,7 @@ const TestWrapper = (): ReactElement => {
     >
       <div className="flex gap-5">
         <h2>{TEXT_CONTENT.questions.title}</h2>
-        {IS_TIMER_EXISTS && <Timer />}
+        {TIMER_CONFIG.isTimerExists && <Timer />}
       </div>
       <div className="w-full flex justify-between gap-1">
         {QUESTIONS.map((item, index) => (
