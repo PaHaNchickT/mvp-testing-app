@@ -3,7 +3,7 @@
 import { Link } from '@nextui-org/react';
 import type { ReactElement } from 'react';
 
-import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
+import { TEXT_CONTENT } from '@/constants/const-text-content';
 
 export const Footer = (): ReactElement => {
   return (

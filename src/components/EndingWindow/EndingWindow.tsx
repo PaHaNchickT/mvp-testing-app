@@ -4,9 +4,9 @@ import { Button } from '@nextui-org/react';
 import { useEffect, useState, type ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
+import { TEXT_CONTENT } from '@/constants/const-text-content';
 import { clearTest } from '@/redux/appStateSlice';
-import { localStorageUtil } from '@/utils/localStorage';
+import { localStorageUtil } from '@/utils/localStorageUtil';
 
 const EndingWindow = (props: { state: string }): ReactElement => {
   const dispatch = useDispatch();

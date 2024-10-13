@@ -7,13 +7,13 @@ import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import { QUESTIONS } from '@/constants/QUESTIONS';
-import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
+import { QUESTIONS } from '@/constants/const-questions';
+import { TEXT_CONTENT } from '@/constants/const-text-content';
 import { useResize } from '@/hooks/useResize';
 import { endTestSuccess, setWrapperOpacity } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 import type { TOptsForm, TQuestion } from '@/types/types';
-import { localStorageUtil } from '@/utils/localStorage';
+import { localStorageUtil } from '@/utils/localStorageUtil';
 import QuestionFormSchema from '@/validation/QuestionFormSchema';
 
 const QuestionForm = (props: {

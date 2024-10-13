@@ -1,7 +1,7 @@
 import type { ZodSchema } from 'zod';
 import { z } from 'zod';
 
-import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
+import { TEXT_CONTENT } from '@/constants/const-text-content';
 
 const QuestionFormSchema = (): ZodSchema => {
   const schema = z.object({

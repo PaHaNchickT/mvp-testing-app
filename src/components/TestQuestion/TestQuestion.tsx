@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { updateCurrentQuestion } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 import type { TQuestion } from '@/types/types';
-import { localStorageUtil } from '@/utils/localStorage';
+import { localStorageUtil } from '@/utils/localStorageUtil';
 
 import QuestionForm from '../QuestionForm/QuestionForm';
 

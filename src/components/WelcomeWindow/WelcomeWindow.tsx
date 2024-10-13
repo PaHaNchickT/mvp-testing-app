@@ -4,10 +4,10 @@ import { Button, Divider, Image } from '@nextui-org/react';
 import { useEffect, useState, type ReactElement } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { ASSETS_PATH } from '@/constants/ASSETS_PATH';
-import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
+import { ASSETS_PATH } from '@/constants/const-assets-path';
+import { TEXT_CONTENT } from '@/constants/const-text-content';
 import { startTest } from '@/redux/appStateSlice';
-import { localStorageUtil } from '@/utils/localStorage';
+import { localStorageUtil } from '@/utils/localStorageUtil';
 
 const WelcomeWindow = (): ReactElement => {
   const dispatch = useDispatch();
