@@ -32,4 +32,10 @@ export const TEXT_CONTENT = {
       button: 'Попробовать еще',
     },
   } as { [key: string]: { [key: string]: string } },
+  error: {
+    errorMsg: 'Что-то пошло не так!',
+    notFoundMsg: 'Страница не найдена!',
+    homeBtn: 'На главную страницу',
+    reloadBtn: 'Перезагрузить страницу',
+  },
 };
