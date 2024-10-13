@@ -8,9 +8,10 @@ export const appStateSlice = createSlice({
     currentQuestion: localStorageUtil().getData('currentQuestion')
       ? +localStorageUtil().getData('currentQuestion')!
       : 0,
-    isTestStarted: localStorageUtil().getData('isTestStarted')
-      ? JSON.parse(localStorageUtil().getData('currentQuestion')!)
-      : false,
+    isTestStarted:
+      localStorageUtil().getData('isTestStarted') !== null
+        ? JSON.parse(localStorageUtil().getData('isTestStarted')!)
+        : false,
     isTestEnded: false,
     wrapperOpacity: 'opacity-0',
     isSuccess: true,
