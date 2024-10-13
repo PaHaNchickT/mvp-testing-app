@@ -2,7 +2,7 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
-import { localStorageUtil } from '@/utils/localStorage';
+import { localStorageUtil } from '@/utils/localStorageUtil';
 
 export const appStateSlice = createSlice({
   name: 'appState',
