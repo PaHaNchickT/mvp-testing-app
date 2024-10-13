@@ -1,6 +1,10 @@
 export const TEXT_CONTENT = {
   header: {
-    headerTitle: 'Testik',
+    headerTitle: 'Тестик',
+  },
+  footer: {
+    madeby: 'Сделал Павел Терно',
+    works: 'Больше работ тут:',
   },
   welcome: {
     title: '«Мстители» атакуют: тест на знание Кинематографической вселенной Marvel',
@@ -28,4 +32,12 @@ export const TEXT_CONTENT = {
       button: 'Попробовать еще',
     },
   } as { [key: string]: { [key: string]: string } },
-}
+  error: {
+    errorTitle: 'Упс!',
+    errorMsg: 'Что-то пошло не так!',
+    notFoundTitle: '404',
+    notFoundMsg: 'Страница не найдена!',
+    homeBtn: 'На главную страницу',
+    reloadBtn: 'Перезагрузить страницу',
+  },
+};

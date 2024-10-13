@@ -1,16 +1,20 @@
+'use client';
+
 import { createSlice } from '@reduxjs/toolkit';
 
-import { localStorageUtil } from '@/utils/localStorage';
+import { localStorageUtil } from '@/utils/localStorageUtil';
 
 export const appStateSlice = createSlice({
   name: 'appState',
   initialState: {
-    currentQuestion: localStorageUtil().getData('currentQuestion')
-      ? +localStorageUtil().getData('currentQuestion')!
-      : 0,
-    isTestStarted: localStorageUtil().getData('isTestStarted')
-      ? JSON.parse(localStorageUtil().getData('currentQuestion')!)
-      : false,
+    currentQuestion:
+      typeof window !== 'undefined' && localStorageUtil().getData('currentQuestion')
+        ? +localStorageUtil().getData('currentQuestion')!
+        : 0,
+    isTestStarted:
+      typeof window !== 'undefined' && localStorageUtil().getData('isTestStarted')
+        ? JSON.parse(localStorageUtil().getData('isTestStarted')!)
+        : false,
     isTestEnded: false,
     wrapperOpacity: 'opacity-0',
     isSuccess: true,
@@ -35,6 +39,7 @@ export const appStateSlice = createSlice({
     clearTest: (state) => {
       state.isTestEnded = false;
       state.isSuccess = true;
+      state.currentQuestion = 0;
     },
     setWrapperOpacity: (state, action) => {
       state.wrapperOpacity = action.payload;

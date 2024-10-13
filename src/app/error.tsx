@@ -3,14 +3,19 @@
 import { Button } from '@nextui-org/react';
 import type { ReactElement } from 'react';
 
-import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
+import { TEXT_CONTENT } from '@/constants/const-text-content';
 
 const Error = (): ReactElement => {
   return (
-    <div className="flex justify-center">
-      <div className="flex flex-col items-center gap-4 mt-4">
-        <p className="text-center text-xl">{TEXT_CONTENT.errorMsg}</p>
-        <Button onClick={() => location.reload()}>{TEXT_CONTENT.reloadBtn}</Button>
+    <div className="flex justify-center items-center text-center">
+      <div className="flex flex-col z-[2] gap-5 items-center">
+        <div>
+          <p className="text-3xl text-center sm:text-4xl">{TEXT_CONTENT.error.errorTitle}</p>
+          <p className="text-center text-xl sm:text-2xl">{TEXT_CONTENT.error.errorMsg}</p>
+        </div>
+        <Button onClick={() => location.reload()} color="danger">
+          {TEXT_CONTENT.error.reloadBtn}
+        </Button>
       </div>
     </div>
   );

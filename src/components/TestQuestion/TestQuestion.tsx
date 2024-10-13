@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux';
 import { updateCurrentQuestion } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 import type { TQuestion } from '@/types/types';
-import { localStorageUtil } from '@/utils/localStorage';
+import { localStorageUtil } from '@/utils/localStorageUtil';
 
 import QuestionForm from '../QuestionForm/QuestionForm';
 
@@ -32,8 +32,8 @@ const TestQuestion = (props: { item: TQuestion }): ReactElement => {
 
   return (
     <>
-      <div className="flex flex-col gap-5">
-        <p className={`text-justify ${opacity} transition-all`}>{props.item.title}</p>
+      <div className="flex flex-col gap-5 text-sm sm:text-base">
+        <p className={`text-left ${opacity} transition-all font-bold sm:text-justify`}>{props.item.title}</p>
         <QuestionForm item={props.item as Required<TQuestion>} clickHandler={clickHandler} opacity={opacity} />
       </div>
     </>
