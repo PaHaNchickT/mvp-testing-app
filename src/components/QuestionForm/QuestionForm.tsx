@@ -74,7 +74,7 @@ const QuestionForm = (props: {
       JSON.stringify([
         ...answers,
         {
-          question: props.item.title,
+          question: props.item.question,
           answer: data.answer,
           isCorrect,
         },
@@ -86,7 +86,7 @@ const QuestionForm = (props: {
     setAnswers((e) => [
       ...e,
       {
-        question: props.item.title,
+        question: props.item.question,
         answer: data.answer,
         isCorrect,
       },
