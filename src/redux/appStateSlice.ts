@@ -1,3 +1,5 @@
+'use client';
+
 import { createSlice } from '@reduxjs/toolkit';
 
 import { localStorageUtil } from '@/utils/localStorage';
@@ -5,11 +7,12 @@ import { localStorageUtil } from '@/utils/localStorage';
 export const appStateSlice = createSlice({
   name: 'appState',
   initialState: {
-    currentQuestion: localStorageUtil().getData('currentQuestion')
-      ? +localStorageUtil().getData('currentQuestion')!
-      : 0,
+    currentQuestion:
+      typeof window !== 'undefined' && localStorageUtil().getData('currentQuestion')
+        ? +localStorageUtil().getData('currentQuestion')!
+        : 0,
     isTestStarted:
-      localStorageUtil().getData('isTestStarted') !== null
+      typeof window !== 'undefined' && localStorageUtil().getData('isTestStarted')
         ? JSON.parse(localStorageUtil().getData('isTestStarted')!)
         : false,
     isTestEnded: false,
