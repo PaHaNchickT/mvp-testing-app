@@ -21,7 +21,7 @@ const RootLayout = async ({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body className={comfortaa.className}>
-        <div className="w-screen h-screen flex flex-col justify-between">
+        <div className="w-screen min-h-screen flex flex-col justify-between">
           <Header />
           {children}
           <Footer />

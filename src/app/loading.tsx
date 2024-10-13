@@ -3,7 +3,7 @@ import { type ReactElement } from 'react';
 
 const Loader = (): ReactElement => {
   return (
-    <div className="w-screen max-w-full h-screen flex justify-center items-center">
+    <div className="w-screen max-w-full flex justify-center items-center">
       <Spinner color="danger" size="lg" />
     </div>
   );
