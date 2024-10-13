@@ -23,8 +23,10 @@ const EndingWindow = (props: { state: string }): ReactElement => {
   }, []);
 
   return (
-    <section className={`flex flex-col justify-center items-center gap-5 w-[400px] ${opacity} transition-all`}>
-      <h2 className="font-black text-2xl">{TEXT_CONTENT.ending[props.state].title}</h2>
+    <section
+      className={`flex flex-col justify-center items-center gap-5 w-[400px] p-5 ${opacity} transition-all md:p-0`}
+    >
+      <h2 className="font-black text-2xl text-center">{TEXT_CONTENT.ending[props.state].title}</h2>
       <p className="text-sm text-center">{TEXT_CONTENT.ending[props.state].text}</p>
       <Button color="danger" onPress={clickHandler}>
         {TEXT_CONTENT.ending[props.state].button}
