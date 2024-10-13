@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 
 import { QUESTIONS } from '@/constants/QUESTIONS';
 import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
+import { useResize } from '@/hooks/useResize';
 import { endTestSuccess, setWrapperOpacity, updateCurrentQuestion } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 import type { TOptsForm, TQuestion } from '@/types/types';
@@ -24,6 +25,7 @@ const QuestionForm = (props: {
     { question: string; answer: string | string[]; isCorrect: boolean | string }[]
   >(localStorageUtil().getData('answers') ? JSON.parse(localStorageUtil().getData('answers')!) : []);
   const dispatch = useDispatch();
+  const inputSize = useResize();
   const [selectedCheck, setSelectedCheck] = useState<string[]>([]);
   const currentQuestion = useSelector((state: RootState) => state.appState.currentQuestion);
 
@@ -105,20 +107,25 @@ const QuestionForm = (props: {
   };
 
   // Props for inputs
-  const itemVariantsProps = {
-    color: 'danger' as const,
+  const itemStyleProps = {
     isInvalid: Boolean(errors.answer?.message),
     errorMessage: errors.answer?.message,
-    className: `${props.opacity} transition-all`,
+    size: inputSize,
+    className: 'transition-all',
+  };
+
+  const itemVariantsProps = {
+    color: 'danger' as const,
+    ...itemStyleProps,
+    className: `${props.opacity}`,
   };
 
   const itemNonVariantsProps = {
     ...register('answer'),
     value: watch('answer'),
-    className: `${props.opacity} transition-all`,
     onChange: handleChange,
-    isInvalid: Boolean(errors.answer),
-    errorMessage: errors.answer?.message,
+    ...itemStyleProps,
+    className: `${props.opacity} block sm:inline-block`,
   };
 
   return (
@@ -146,7 +153,12 @@ const QuestionForm = (props: {
       ) : (
         <Textarea label={TEXT_CONTENT.questions.textHighLabel} {...itemNonVariantsProps} />
       )}
-      <Button type="submit" color="danger" isDisabled={Boolean(errors.answer?.message)}>
+      <Button
+        type="submit"
+        color="danger"
+        isDisabled={Boolean(errors.answer?.message)}
+        className="self-center sm:self-start"
+      >
         {currentQuestion === QUESTIONS.length - 1 ? TEXT_CONTENT.questions.endBtn : TEXT_CONTENT.questions.answerBtn}
       </Button>
     </form>

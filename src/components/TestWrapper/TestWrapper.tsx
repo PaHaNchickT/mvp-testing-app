@@ -26,10 +26,10 @@ const TestWrapper = (): ReactElement => {
 
   return (
     <section
-      className={`flex flex-col items-start gap-5 min-w-[400px] max-w-[600px] ${appState.wrapperOpacity} transition-all`}
+      className={`flex flex-col items-start gap-5 w-full p-5 ${appState.wrapperOpacity} transition-all sm:w-[600px] sm:p-0`}
     >
       <div className="w-full flex gap-5 justify-between items-center">
-        <h2 className="font-black text-2xl">{TEXT_CONTENT.questions.title}</h2>
+        <h2 className="font-black text-xl sm:text-2xl">{TEXT_CONTENT.questions.title}</h2>
         {TIMER_CONFIG.isTimerExists && <Timer />}
       </div>
       <div className="w-full flex justify-between gap-1">

@@ -44,7 +44,7 @@ const Timer = (): ReactElement => {
   }, [seconds]);
 
   return (
-    <p className="text-xl w-[55px] text-center">{`${minutes.toString().padStart(2, '0')}:${(seconds - minutes * 60).toString().padStart(2, '0')}`}</p>
+    <p className="text-lg w-[55px] text-center sm:text-xl">{`${minutes.toString().padStart(2, '0')}:${(seconds - minutes * 60).toString().padStart(2, '0')}`}</p>
   );
 };
 

@@ -32,8 +32,8 @@ const TestQuestion = (props: { item: TQuestion }): ReactElement => {
 
   return (
     <>
-      <div className="flex flex-col gap-5">
-        <p className={`text-justify ${opacity} transition-all font-bold`}>{props.item.title}</p>
+      <div className="flex flex-col gap-5 text-sm sm:text-base">
+        <p className={`text-left ${opacity} transition-all font-bold sm:text-justify`}>{props.item.title}</p>
         <QuestionForm item={props.item as Required<TQuestion>} clickHandler={clickHandler} opacity={opacity} />
       </div>
     </>
