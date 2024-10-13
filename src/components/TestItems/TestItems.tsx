@@ -17,7 +17,7 @@ const TestItems = (props: { index: number }): ReactElement => {
     }
   }, [currentQuestion, props.index]);
 
-  return <div className={`w-[45px] h-[5px] ${bgColor} transition-all`}></div>;
+  return <div className={`w-full h-[5px] ${bgColor} transition-all`}></div>;
 };
 
 export default TestItems;
