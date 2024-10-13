@@ -39,6 +39,7 @@ export const appStateSlice = createSlice({
     clearTest: (state) => {
       state.isTestEnded = false;
       state.isSuccess = true;
+      state.currentQuestion = 0;
     },
     setWrapperOpacity: (state, action) => {
       state.wrapperOpacity = action.payload;

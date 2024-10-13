@@ -10,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { QUESTIONS } from '@/constants/QUESTIONS';
 import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
 import { useResize } from '@/hooks/useResize';
-import { endTestSuccess, setWrapperOpacity, updateCurrentQuestion } from '@/redux/appStateSlice';
+import { endTestSuccess, setWrapperOpacity } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
 import type { TOptsForm, TQuestion } from '@/types/types';
 import { localStorageUtil } from '@/utils/localStorage';
@@ -99,7 +99,6 @@ const QuestionForm = (props: {
       dispatch(setWrapperOpacity('opacity-0'));
       setTimeout(() => {
         dispatch(endTestSuccess());
-        dispatch(updateCurrentQuestion(0));
       }, 250);
     } else {
       props.clickHandler();
