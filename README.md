@@ -15,7 +15,15 @@ Deploy: [link](https://mvp-testing-app.vercel.app/)
 На реальном проекте данные с вопросами и конфигурацией таймера будут приходить с сервера, но поскольку целью данного приложения на этапе MVP являлось создание только клиентской части, вместо JSON файла с сервера, данные берутся из файлов констант, расположенных по следующему пути: `mvp-testing-app/src/constants/`.
 
 1. Для изменения списка вопросов необходимо обновить массив с вопросами в файле `const-questions.ts`, который содержит объекты следующего типа:
-   `{question: string; type: 'radio' | 'check' | 'input' | 'text'; variants?: string[]; correctAnswer?: string | string[];}`
+
+   ```
+   {
+   title: string;
+   type: 'radio' | 'check' | 'input' | 'text';
+   variants?: string[];
+   correctAnswer?: string | string[];
+   };
+   ```
 
    Где:
 
@@ -42,7 +50,13 @@ Deploy: [link](https://mvp-testing-app.vercel.app/)
    Для добавления / удаления / изменения списка вопросов добавьте / удалите / измените соответствующий объект в описанном выше массиве.
 
 2. Для изменения конфигурации таймера необходимо в файле `const-questions.ts` обновить объект следующего типа:
-   `TIMER_CONFIG = {isTimerExists: boolean;seconds: number;}`
+
+   ```
+   {
+     isTimerExists: boolean;
+     seconds: number;
+   }
+   ```
 
    Где:
 
@@ -50,7 +64,14 @@ Deploy: [link](https://mvp-testing-app.vercel.app/)
    - `seconds` - Время, выделенное на прохождение теста;
 
 3. По завершении теста в консоли отображается массив из объектов следующего типа:
-   `{question: string; answer: string; isCorrect: boolean | string;}`
+
+   ```
+   {
+     question: string;
+     answer: string;
+     isCorrect: boolean | string'
+   }
+   ```
 
    Где:
 
@@ -94,4 +115,8 @@ Deploy: [link](https://mvp-testing-app.vercel.app/)
 | Стартовая страница                                                                           | Страница с тестированием                                                                     |
 | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 | ![promo-01](https://github.com/user-attachments/assets/b85a599e-0ed5-4d81-b5d4-22f496419824) | ![promo-02](https://github.com/user-attachments/assets/fa5127fe-e56a-49ed-93c1-c58fbd5dddf8) |
+
+```
+
+```
 
