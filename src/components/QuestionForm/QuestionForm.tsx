@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 
-import { QUESTIONS } from '@/constants/questions';
+import { QUESTIONS } from '@/constants/QUESTIONS';
 import { TEXT_CONTENT } from '@/constants/TEXT_CONTENT';
 import { endTestSuccess, setWrapperOpacity, updateCurrentQuestion } from '@/redux/appStateSlice';
 import type { RootState } from '@/redux/store';
