@@ -33,7 +33,9 @@ export const TEXT_CONTENT = {
     },
   } as { [key: string]: { [key: string]: string } },
   error: {
+    errorTitle: 'Упс!',
     errorMsg: 'Что-то пошло не так!',
+    notFoundTitle: '404',
     notFoundMsg: 'Страница не найдена!',
     homeBtn: 'На главную страницу',
     reloadBtn: 'Перезагрузить страницу',
